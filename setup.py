@@ -24,7 +24,7 @@ REQUIRES = [
     #"tensorflow>=1.14,<1.15",
     "numpy>=1.14",
     "scipy>=1.1.0",
-    "networkx>=2.2,<2.4", # FIXME (#503): NetworkX 2.4 removed some attributes
+    "networkx>=2.4", # FIXME (#503): NetworkX 2.4 removed some attributes
     "scikit_learn>=0.20",
     "matplotlib>=2.2",
     #"gensim>=3.4.0",
@@ -67,7 +67,7 @@ setuptools.setup(
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     include_package_data=True,
-    python_requires=">=3.5.0, <3.9.0",
+    python_requires=">=3.5.0, <3.10.0",
     install_requires=REQUIRES,
     extras_require=EXTRAS_REQURES,
     packages=setuptools.find_packages(exclude=("tests",)),
