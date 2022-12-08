@@ -13,6 +13,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#dep_fix
+try: #<=Python3.9
+    from collections import Iterable, Iterator
+except: #>=3.10
+    from collections.abc import Iterable, Iterator
+
 import collections
 import scipy.sparse as sp
 from scipy.sparse.linalg import ArpackNoConvergence, eigsh
@@ -29,7 +35,7 @@ def is_real_iterable(x):
     Returns:
         True if x is an iterable (but not a string) and False otherwise
     """
-    return isinstance(x, collections.Iterable) and not isinstance(x, (str, bytes))
+    return isinstance(x, Iterable) and not isinstance(x, (str, bytes))
 
 
 def normalize_adj(adj, symmetric=True):

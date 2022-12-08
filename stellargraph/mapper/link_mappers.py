@@ -26,6 +26,12 @@ __all__ = [
     "HinSAGELinkGenerator",
     "Attri2VecLinkGenerator",
 ]
+#dep_fix
+#dep_fix
+try: #<=Python3.9
+    from collections import Iterable, Iterator
+except: #>=3.10
+    from collections.abc import Iterable, Iterator
 
 import random
 import operator
@@ -476,7 +482,7 @@ class GraphSAGELinkGenerator:
             return OnDemandLinkSequence(self, link_ids)
 
         # Otherwise pass iterable (check?) to standard LinkSequence
-        elif isinstance(link_ids, collections.Iterable):
+        elif isinstance(link_ids, Iterable):
             return LinkSequence(self, link_ids, targets, shuffle)
 
         else:
@@ -648,7 +654,7 @@ class HinSAGELinkGenerator:
             A LinkSequence object to use with the GraphSAGE model
             methods :meth:`fit_generator`, :meth:`evaluate_generator`, and :meth:`predict_generator`
         """
-        if not isinstance(link_ids, collections.Iterable):
+        if not isinstance(link_ids, Iterable):
             raise TypeError(
                 "Argument to .flow not recognised. "
                 "Please pass a list of samples or a UnsupervisedSampler object."
@@ -741,7 +747,7 @@ class Attri2VecLinkGenerator:
             return OnDemandLinkSequence(self, link_ids)
 
         # Otherwise pass iterable to standard LinkSequence
-        elif isinstance(link_ids, collections.Iterable):
+        elif isinstance(link_ids, Iterable):
             return LinkSequence(self, link_ids, targets, shuffle=True)
 
         else:

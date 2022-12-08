@@ -31,7 +31,11 @@ import numpy as np
 from networkx.classes.multigraph import MultiGraph
 from networkx.classes.multidigraph import MultiDiGraph
 
-from collections import Iterable, Iterator
+#dep_fix
+try: #<=Python3.9
+    from collections import Iterable, Iterator
+except: #>=3.10
+    from collections.abc import Iterable, Iterator
 
 from .. import globalvar
 from .schema import GraphSchema
